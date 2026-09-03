@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Коммерческое предложение — Редизайн сайта ГК «Антей»</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.jpg" type="image/png">
+  <style>
+    :root {
+      --bg:        #F5F5F5;
+      --dark:      #333037;
+      --black:     #000000;
+      --mid:       #D9D9D9;
+      --blush:     #F6E1E1;
+      --lavender:  #DDD7E9;
+      --sky:       #DDEAF3;
+      --white:     #FFFFFF;
+      --secondary: #999999;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-family: 'Onest', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    section {
+      padding: 100px 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--mid);
+    }
+
+    /* Typography */
+    h1 {
+      font-size: clamp(40px, 5vw, 68px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -1.5px;
+      color: var(--black);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.8px;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+
+    h3 {
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--black);
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .text-secondary {
+      font-size: 14px;
+      color: var(--secondary);
+    }
+
+    /* Components */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      background: var(--white);
+      border: 1px solid var(--mid);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--dark);
+      width: fit-content;
+    }
+
+    .pill-accent {
+      background: var(--sky);
+      border-color: transparent;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(245, 245, 245, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--mid);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .logo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 500;
+      font-size: 15px;
+      padding: 6px 14px;
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 100px;
+      transition: background 0.2s;
+    }
+
+    .logo-btn:hover {
+      background: #EAEAEA;
+    }
+
+    .logo-badge {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10B981;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--black);
+    }
+
+    /* Hero */
+    .hero-section {
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+
+    .hero-tag {
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      color: var(--dark);
+      max-width: 720px;
+      margin-bottom: 48px;
+      line-height: 1.5;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .meta-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .meta-card .label {
+      font-size: 12px;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-card .value {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    /* Section 01: Tasks */
+    .tasks-intro {
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 840px;
+      margin-bottom: 40px;
+      color: var(--black);
+    }
+
+    .tasks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .task-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .task-num {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--secondary);
+      letter-spacing: 0.08em;
+    }
+
+    /* Section 02: Stages */
+    .tabs-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      background: rgba(0,0,0,0.04);
+      padding: 4px;
+      border-radius: 100px;
+      width: fit-content;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--white);
+      color: var(--black);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .stages-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .stage-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .stage-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .stage-info p {
+      font-size: 14px;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .stage-result {
+      font-size: 13px;
+      color: var(--secondary);
+      background: var(--bg);
+      padding: 8px 12px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    /* Section 03: Gantt */
+    .gantt-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .gantt-switch {
+      display: flex;
+      gap: 4px;
+      background: rgba(0,0,0,0.04);
+      padding: 4px;
+      border-radius: 100px;
+    }
+
+    .gantt-switch-btn {
+      padding: 6px 16px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--dark);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .gantt-switch-btn.active {
+      background: var(--white);
+      color: var(--black);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .gantt-wrapper {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 20px;
+      padding: 24px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gantt-table {
+      min-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .gantt-header {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      align-items: center;
+      border-bottom: 1px solid var(--mid);
+      padding-bottom: 12px;
+    }
+
+    .gantt-cols {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      text-align: center;
+      font-size: 12px;
+      color: var(--secondary);
+      font-weight: 500;
+      position: relative;
+    }
+
+    .gantt-row {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 8px 0;
+    }
+
+    .gantt-row-main {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .gantt-row-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--black);
+    }
+
+    .accordion-icon {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s;
+    }
+
+    .gantt-row-main.expanded .accordion-icon {
+      transform: rotate(90deg);
+    }
+
+    .gantt-track {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      height: 28px;
+      align-items: center;
+      position: relative;
+    }
+
+    .gantt-bar {
+      height: 18px;
+      border-radius: 9px;
+      position: relative;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .gantt-bar:hover {
+      opacity: 0.85;
+    }
+
+    .gantt-bar-sky { background: var(--sky); border: 1px solid #C4DCEB; }
+    .gantt-bar-lavender { background: var(--lavender); border: 1px solid #C9BFDD; }
+
+    .gantt-subtasks {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 8px;
+      padding-left: 24px;
+    }
+
+    .gantt-subtask-row {
+      display: grid;
+      grid-template-columns: 236px 1fr;
+      align-items: center;
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .gantt-tooltip {
+      position: fixed;
+      background: var(--dark);
+      color: var(--white);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 10000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Section 04: Format */
+    .format-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .format-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .format-card.accent {
+      background: var(--sky);
+      border-color: transparent;
+    }
+
+    .format-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .format-card ul li {
+      position: relative;
+      padding-left: 20px;
+      font-size: 14px;
+    }
+
+    .format-card ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+    }
+
+    /* Common Custom Scrollbars for Tables & Gantt */
+    .table-scroll::-webkit-scrollbar,
+    .rates-wrapper::-webkit-scrollbar,
+    .gantt-wrapper::-webkit-scrollbar,
+    .tabs-header::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .table-scroll::-webkit-scrollbar-track,
+    .rates-wrapper::-webkit-scrollbar-track,
+    .gantt-wrapper::-webkit-scrollbar-track,
+    .tabs-header::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.03);
+      border-radius: 100px;
+    }
+
+    .table-scroll::-webkit-scrollbar-thumb,
+    .rates-wrapper::-webkit-scrollbar-thumb,
+    .gantt-wrapper::-webkit-scrollbar-thumb,
+    .tabs-header::-webkit-scrollbar-thumb {
+      background: var(--mid);
+      border-radius: 100px;
+    }
+
+    /* Section 05: Rates */
+    .rates-wrapper {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 20px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+    }
+
+    .rates-table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .rates-table th {
+      background: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--mid);
+      white-space: nowrap;
+    }
+
+    .rates-table td {
+      padding: 18px 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 14px;
+    }
+
+    .rates-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rates-table tr:hover td {
+      background: rgba(0,0,0,0.015);
+    }
+
+    .rate-badge {
+      font-weight: 500;
+      color: var(--black);
+      white-space: nowrap;
+    }
+
+    /* Section 06: Budget & Estimates */
+    .scenarios-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .scenario-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .scenario-card.recommended {
+      border: 2px solid var(--dark);
+      position: relative;
+    }
+
+    .scenario-header {
+      margin-bottom: 20px;
+    }
+
+    .scenario-title {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .scenario-sub {
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    .scenario-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .scenario-body ul li {
+      font-size: 14px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .scenario-body ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--dark);
+    }
+
+    .scenario-price-box {
+      border-top: 1px solid var(--mid);
+      padding-top: 20px;
+    }
+
+    .price-main {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    .price-vat {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-top: 2px;
+    }
+
+    /* Reliable Scrollable Estimate Blocks */
+    .estimate-block {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 24px;
+      width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+
+    .estimate-table {
+      width: 100%;
+      min-width: 820px;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .estimate-table th, .estimate-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .estimate-table th {
+      background: var(--bg);
+      font-weight: 500;
+      color: var(--secondary);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    .estimate-table th:first-child,
+    .estimate-table td:first-child {
+      white-space: normal;
+      min-width: 180px;
+      padding-left: 12px;
+    }
+
+    .estimate-table th:last-child,
+    .estimate-table td:last-child {
+      text-align: right;
+      padding-right: 12px;
+      font-weight: 500;
+    }
+
+    .estimate-table th:not(:first-child):not(:last-child),
+    .estimate-table td:not(:first-child):not(:last-child) {
+      text-align: center;
+    }
+
+    .estimate-table tfoot td {
+      font-weight: 500;
+      background: rgba(0,0,0,0.02);
+      border-top: 2px solid var(--mid);
+      border-bottom: none;
+      font-size: 13px;
+      color: var(--black);
+    }
+
+    /* Total Dark Card */
+    .total-card {
+      background: var(--dark);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .total-title {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+
+    .total-amount {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .total-vat-note {
+      font-size: 13px;
+      color: #B3B0B8;
+      margin-top: 6px;
+    }
+
+    /* Options Block */
+    .options-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 0 20px;
+      color: var(--black);
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .option-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .assumptions-box {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .assumptions-box h4 {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .assumptions-box ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 24px;
+    }
+
+    .assumptions-box ul li {
+      font-size: 13px;
+      color: var(--secondary);
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .assumptions-box ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+    }
+
+    /* Section 07: Cases */
+    .cases-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    }
+
+    .case-img-holder {
+      height: 100%;
+      min-height: 240px;
+      background: var(--sky);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .case-img-holder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .case-body {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .case-body h3 {
+      font-size: 22px;
+    }
+
+    .case-body p {
+      font-size: 15px;
+      color: var(--secondary);
+      line-height: 1.55;
+    }
+
+    /* Section 08: CTA */
+    .cta-section {
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .cta-section h2 {
+      color: var(--white);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .cta-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cta-step-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .cta-step-card h3 {
+      color: var(--white);
+    }
+
+    .cta-step-num {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--secondary);
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .contact-card {
+      background: var(--white);
+      color: var(--dark);
+      border-radius: 20px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-card h3 {
+      color: var(--black);
+      font-size: 20px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .contact-info a {
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+
+    .contact-info a:hover {
+      opacity: 0.7;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: var(--secondary);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 32px 0;
+      font-size: 13px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .meta-grid,
+      .tasks-grid,
+      .format-grid,
+      .scenarios-grid,
+      .options-grid,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case-card {
+        grid-template-columns: 1fr;
+      }
+
+      .case-img-holder {
+        height: 200px;
+        min-height: auto;
+      }
+
+      .total-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .assumptions-box ul {
+        grid-template-columns: 1fr;
+      }
+
+      .stage-card {
+        flex-direction: column;
+      }
+
+      .estimate-block {
+        padding: 16px;
+      }
+
+      .rates-table td, 
+      .rates-table th {
+        padding: 12px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo-btn">
+        <span class="logo-badge"></span>
+        Луч &nbsp;×&nbsp; ГК&nbsp;«Антей»
+      </a>
+      <ul class="nav-links">
+        <li><a href="#tasks">Задачи</a></li>
+        <li><a href="#stages">Этапы</a></li>
+        <li><a href="#timeline">Сроки</a></li>
+        <li><a href="#format">Формат</a></li>
+        <li><a href="#rates">Ставки</a></li>
+        <li><a href="#budget">Стоимость</a></li>
+        <li><a href="#cases">Кейсы</a></li>
+        <li><a href="#cta">Контакты</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-tag">
+        <span class="pill pill-accent">Коммерческое предложение</span>
+      </div>
+      <h1>Редизайн корпоративного сайта ГК&nbsp;«Антей»</h1>
+      <p class="hero-subtitle">
+        Проектирование, премиальный дизайн&nbsp;и разработка современного мультиязычного портала на&nbsp;CMS 1С-Битрикс для одного из&nbsp;крупнейших рыбопромысловых холдингов России.
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span class="label">Ориентировочный срок</span>
+          <span class="value">20–30 недель</span>
+        </div>
+        <div class="meta-card">
+          <span class="label">Готовность к старту</span>
+          <span class="value">5 дней</span>
+        </div>
+        <div class="meta-card">
+          <span class="label">Бюджет проекта</span>
+          <span class="value">от 4.8 млн ₽</span>
+        </div>
+        <div class="meta-card">
+          <span class="label">Формат работы</span>
+          <span class="value">Time &amp; Materials</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tasks">
+    <div class="container">
+      <span class="section-label">01 — Задача</span>
+      <h2>Цели проекта и&nbsp;ориентиры</h2>
+      <p class="tasks-intro">
+        Новый сайт станет современной, гибкой и&nbsp;высокопроизводительной платформой, укрепляющей имидж ГК&nbsp;«Антей» как ключевого глобального игрока с&nbsp;высокими стандартами качества и&nbsp;экологической ответственности.
+      </p>
+
+      <div class="tasks-grid">
+        <div class="task-card">
+          <span class="task-num">01</span>
+          <h3>Визуальный язык&nbsp;и брендинг</h3>
+          <p class="text-secondary">
+            Чистый, премиальный дизайн с&nbsp;морской и&nbsp;технологичной эстетикой уровня лидеров отрасли (ориентир&nbsp;— <i>Russian Crab</i>). Меньше сухости&nbsp;— больше масштаба флота и&nbsp;прозрачности.
+          </p>
+        </div>
+
+        <div class="task-card">
+          <span class="task-num">02</span>
+          <h3>Информационная архитектура</h3>
+          <p class="text-secondary">
+            Понятная навигация без перегруза. Сохраняем привычную логику текущего сайта, очищая её от&nbsp;неактуальных разделов (выводится устаревший раздел «Проекты»).
+          </p>
+        </div>
+
+        <div class="task-card">
+          <span class="task-num">03</span>
+          <h3>B2B-каталоги (Флот и&nbsp;Продукция)</h3>
+          <p class="text-secondary">
+            Интерактивный реестр судов-краболовов с&nbsp;их техническим оснащением&nbsp;и каталог продукции (живой&nbsp;и варено-мороженый краб) с&nbsp;детальными спецификациями для партнеров.
+          </p>
+        </div>
+
+        <div class="task-card">
+          <span class="task-num">04</span>
+          <h3>Переработанный HR-хаб</h3>
+          <p class="text-secondary">
+            Полная замена статических форм. Внедрение удобного HR-модуля с&nbsp;интеграцией виджета <b>hh.ru</b> для гибкой работы с&nbsp;вакансиями в&nbsp;море и&nbsp;на берегу.
+          </p>
+        </div>
+
+        <div class="task-card">
+          <span class="task-num">05</span>
+          <h3>Мультиязычность (5 языков)</h3>
+          <p class="text-secondary">
+            Полноценная локализация на&nbsp;русский, английский, китайский, японский&nbsp;и корейский языки для работы с&nbsp;ключевыми азиатскими и&nbsp;мировыми импортерами.
+          </p>
+        </div>
+
+        <div class="task-card">
+          <span class="task-num">06</span>
+          <h3>Управление на&nbsp;CMS 1С-Битрикс</h3>
+          <p class="text-secondary">
+            Удобная админ-панель для самостоятельной актуализации контента, новостей и&nbsp;вакансий сотрудниками компании без привлечения разработчиков.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stages">
+    <div class="container">
+      <span class="section-label">02 — Этапы</span>
+      <h2>Пошаговый план реализации</h2>
+
+      <div class="tabs-header">
+        <button class="tab-btn active" onclick="switchTab('design', this)">Дизайн-проектирование</button>
+        <button class="tab-btn" onclick="switchTab('dev', this)">Разработка &amp; Интеграция</button>
+      </div>
+
+      <div id="tab-design" class="tab-content active">
+        <div class="stages-list">
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>1. Погружение&nbsp;и исследование</h3>
+              <p>Анализ текущих материалов, исследование конкурентов и&nbsp;лучших практик отрасли. Формирование ресерча фич.</p>
+              <span class="stage-result">Результат: Файл в&nbsp;Figma с&nbsp;исследованием и&nbsp;идеями</span>
+            </div>
+            <span class="pill">1–2 недели</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>2. UX-проектирование</h3>
+              <p>Описание пользовательских сценариев, разработка архитектуры и&nbsp;создание интерактивных прототипов всех страниц.</p>
+              <span class="stage-result">Результат: Прототипы всех страниц сайта</span>
+            </div>
+            <span class="pill">3–4 недели</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>3. Дизайн-концепция</h3>
+              <p>Подбор референсов, разработка 3 стилевых направлений и&nbsp;финализация концепции на&nbsp;примере Главной страницы.</p>
+              <span class="stage-result">Результат: Утвержденная дизайн-концепция</span>
+            </div>
+            <span class="pill">2–3 недели</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>4. UI-дизайн и&nbsp;адаптивы</h3>
+              <p>Отрисовка всех страниц, состояний и&nbsp;мобильных версий. Сборка единой дизайн-системы и&nbsp;UI-kit.</p>
+              <span class="stage-result">Результат: Готовые макеты для разработки</span>
+            </div>
+            <span class="pill">4–5 недель</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>5. Передача в&nbsp;разработку и&nbsp;дизайн-ревью</h3>
+              <p>Серия встреч с&nbsp;продакшеном, передача макетов в&nbsp;Figma и&nbsp;две итерации авторского контроля вёрстки.</p>
+              <span class="stage-result">Результат: Готовность к&nbsp;разработке</span>
+            </div>
+            <span class="pill">1–2 недели</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-dev" class="tab-content">
+        <div class="stages-list">
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>1. Развёртывание и&nbsp;DevOps</h3>
+              <p>Настройка репозиториев, тестового окружения, CI/CD, базовая сборка компонентов и&nbsp;оптимизация графики.</p>
+              <span class="stage-result">Результат: Развернутый проект для вёрстки</span>
+            </div>
+            <span class="pill">1–2 недели</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>2. Вёрстка макетов&nbsp;и анимации</h3>
+              <p>Адаптивная вёрстка всех страниц, микроинтеракций и&nbsp;плавных анимаций интерфейса.</p>
+              <span class="stage-result">Результат: Адаптивные свёрстанные страницы</span>
+            </div>
+            <span class="pill">4–6 недель</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>3. Серверная часть&nbsp;и интеграции</h3>
+              <p>Подключение CMS 1С-Битрикс, интеграция виджета hh.ru, настройка 5 языковых версий и&nbsp;админки.</p>
+              <span class="stage-result">Результат: Настроенная CMS и&nbsp;интеграции</span>
+            </div>
+            <span class="pill">4–5 недель</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>4. Тестирование (QA)</h3>
+              <p>Комплексная проверка форм, навигации, корректности мультиязычности и&nbsp;адаптивности на&nbsp;устройствах.</p>
+              <span class="stage-result">Результат: Протестированный сайт без багов</span>
+            </div>
+            <span class="pill">2–3 недели</span>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-info">
+              <h3>5. Запуск&nbsp;и деплой</h3>
+              <p>Подключение систем веб-аналитики, финальный деплой на&nbsp;основной домен клиента.</p>
+              <span class="stage-result">Результат: Работающий сайт на&nbsp;домене</span>
+            </div>
+            <span class="pill">1–2 недели</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="container">
+      <span class="section-label">03 — Сроки</span>
+      <h2>Диаграмма Ганта</h2>
+
+      <div class="gantt-controls">
+        <p class="text-secondary">Общая длительность: 16 недель (4 месяца)</p>
+        <div class="gantt-switch">
+          <button class="gantt-switch-btn active" onclick="setGanttScale('weeks', this)">По неделям</button>
+          <button class="gantt-switch-btn" onclick="setGanttScale('months', this)">По месяцам</button>
+        </div>
+      </div>
+
+      <div class="gantt-wrapper">
+        <div class="gantt-table">
+          <div class="gantt-header">
+            <div style="font-size:13px; font-weight:500;">Этапы и задачи</div>
+            <div class="gantt-cols" id="gantt-scale-header"></div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-row-main" onclick="toggleAccordion('design-subtasks', this)">
+              <div class="gantt-row-title">
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Этап 1: Дизайн</span>
+              </div>
+              <div class="gantt-track">
+                <div class="gantt-bar gantt-bar-sky" style="grid-column: 1 / span 9;" onmouseover="showTooltip(event, 'Этап 1: Дизайн', 'Недели 1–9 (9 недель)')" onmouseout="hideTooltip()"></div>
+              </div>
+            </div>
+            <div class="gantt-subtasks" id="design-subtasks">
+              <div class="gantt-subtask-row">
+                <span>1.1 Исследование</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-sky" style="grid-column: 1 / span 2;" onmouseover="showTooltip(event, '1.1 Исследование', 'Недели 1–2')" onmouseout="hideTooltip()"></div></div>
+              </div>
+              <div class="gantt-subtask-row">
+                <span>1.2 UX-проектирование</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-sky" style="grid-column: 2 / span 4;" onmouseover="showTooltip(event, '1.2 UX-проектирование', 'Недели 2–5')" onmouseout="hideTooltip()"></div></div>
+              </div>
+              <div class="gantt-subtask-row">
+                <span>1.3 Дизайн-концепция</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-sky" style="grid-column: 4 / span 3;" onmouseover="showTooltip(event, '1.3 Дизайн-концепция', 'Недели 4–6')" onmouseout="hideTooltip()"></div></div>
+              </div>
+              <div class="gantt-subtask-row">
+                <span>1.4 UI-дизайн и адаптивы</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-sky" style="grid-column: 6 / span 4;" onmouseover="showTooltip(event, '1.4 UI-дизайн', 'Недели 6–9')" onmouseout="hideTooltip()"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-row-main" onclick="toggleAccordion('dev-subtasks', this)">
+              <div class="gantt-row-title">
+                <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                <span>Этап 2: Разработка</span>
+              </div>
+              <div class="gantt-track">
+                <div class="gantt-bar gantt-bar-lavender" style="grid-column: 8 / span 9;" onmouseover="showTooltip(event, 'Этап 2: Разработка', 'Недели 8–16 (9 недель)')" onmouseout="hideTooltip()"></div>
+              </div>
+            </div>
+            <div class="gantt-subtasks" id="dev-subtasks">
+              <div class="gantt-subtask-row">
+                <span>2.1 Setup &amp; DevOps</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-lavender" style="grid-column: 8 / span 2;" onmouseover="showTooltip(event, '2.1 Setup & DevOps', 'Недели 8–9')" onmouseout="hideTooltip()"></div></div>
+              </div>
+              <div class="gantt-subtask-row">
+                <span>2.2 Вёрстка &amp; анимации</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-lavender" style="grid-column: 9 / span 5;" onmouseover="showTooltip(event, '2.2 Вёрстка', 'Недели 9–13')" onmouseout="hideTooltip()"></div></div>
+              </div>
+              <div class="gantt-subtask-row">
+                <span>2.3 Серверная часть &amp; CMS</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-lavender" style="grid-column: 11 / span 5;" onmouseover="showTooltip(event, '2.3 CMS 1С-Битрикс', 'Недели 11–15')" onmouseout="hideTooltip()"></div></div>
+              </div>
+              <div class="gantt-subtask-row">
+                <span>2.4 QA-тестирование</span>
+                <div class="gantt-track"><div class="gantt-bar gantt-bar-lavender" style="grid-column: 14 / span 3;" onmouseover="showTooltip(event, '2.4 QA-тестирование', 'Недели 14–16')" onmouseout="hideTooltip()"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="format">
+    <div class="container">
+      <span class="section-label">04 — Формат работы</span>
+      <h2>Гибкая модель Time &amp; Materials</h2>
+
+      <div class="format-grid">
+        <div class="format-card accent">
+          <h3>Преимущества T&amp;M</h3>
+          <ul>
+            <li>Полный контроль над ходом работ и&nbsp;приоритетами</li>
+            <li>Гибкое изменение требований без длинной бюрократии</li>
+            <li>Еженедельные спринты с&nbsp;демонстрацией результатов</li>
+            <li>Оплата только за&nbsp;фактически отработанные часы</li>
+          </ul>
+        </div>
+
+        <div class="format-card">
+          <h3>Прозрачность и&nbsp;коммуникация</h3>
+          <ul>
+            <li><b>Единое окно:</b> Персональный менеджер на&nbsp;связи каждый день</li>
+            <li><b>Еженедельный отчёт:</b> Каждую пятницу присылаем детализацию задач</li>
+            <li><b>Постоплата:</b> Расчет производится раз в&nbsp;месяц по&nbsp;факту выполнения</li>
+            <li><b>Фиксированные ставки:</b> Часовые рейты зафиксированы в&nbsp;договоре</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rates">
+    <div class="container">
+      <span class="section-label">05 — Команда</span>
+      <h2>Ставки специалистов</h2>
+
+      <div class="rates-wrapper">
+        <table class="rates-table">
+          <thead>
+            <tr>
+              <th>Роль</th>
+              <th>Обязанности</th>
+              <th>Часовой рейт</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Арт-директор (Senior)</b></td>
+              <td>Курирование дизайнеров, создание концепции и
